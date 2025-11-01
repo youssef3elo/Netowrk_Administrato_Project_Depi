@@ -1,0 +1,651 @@
+********ROUTER 1*******
+
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]int	
+[Huawei]interface g0/0/0
+[Huawei-GigabitEthernet0/0/0]ip a	
+[Huawei-GigabitEthernet0/0/0]ip ad	
+[Huawei-GigabitEthernet0/0/0]ip address 192.168.10.1 24
+Oct 31 2025 02:45:32-08:00 Huawei %%01IFNET/4/LINK_STATE(l)[2]:The line protocol
+ IP on the interface GigabitEthernet0/0/0 has entered the UP state. 
+[Huawei-GigabitEthernet0/0/0]
+[Huawei-GigabitEthernet0/0/0]
+[Huawei-GigabitEthernet0/0/0]
+[Huawei-GigabitEthernet0/0/0]
+[Huawei-GigabitEthernet0/0/0]q
+[Huawei]
+[Huawei]interface g0/0/1
+[Huawei-GigabitEthernet0/0/1]ip add	
+[Huawei-GigabitEthernet0/0/1]ip address 10.0.0.1 255.255.255.252
+Oct 31 2025 02:46:14-08:00 Huawei %%01IFNET/4/LINK_STATE(l)[3]:The line protocol
+ IP on the interface GigabitEthernet0/0/1 has entered the UP state. 
+[Huawei-GigabitEthernet0/0/1]
+[Huawei-GigabitEthernet0/0/1]q
+[Huawei]
+[Huawei]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]ip rou	
+[Huawei]ip route-s	
+[Huawei]ip route-static 192.168.20.0 24 10.0.0.2
+[Huawei]q
+<Huawei>
+<Huawei>pi	
+<Huawei>ping 10.0.0.2
+  PING 10.0.0.2: 56  data bytes, press CTRL_C to break
+    Reply from 10.0.0.2: bytes=56 Sequence=1 ttl=255 time=280 ms
+    Reply from 10.0.0.2: bytes=56 Sequence=2 ttl=255 time=30 ms
+    Reply from 10.0.0.2: bytes=56 Sequence=3 ttl=255 time=30 ms
+    Reply from 10.0.0.2: bytes=56 Sequence=4 ttl=255 time=30 ms
+    Reply from 10.0.0.2: bytes=56 Sequence=5 ttl=255 time=20 ms
+
+  --- 10.0.0.2 ping statistics ---
+    5 packet(s) transmitted
+    5 packet(s) received
+    0.00% packet loss
+    round-trip min/avg/max = 20/78/280 ms
+
+<Huawei>
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]ip poo	
+[Huawei]ip pool BRANCH1
+Info: It's successful to create an IP address pool.
+[Huawei-ip-pool-BRANCH1]net	
+[Huawei-ip-pool-BRANCH1]netw	
+[Huawei-ip-pool-BRANCH1]network 192.168.10.0 m	
+[Huawei-ip-pool-BRANCH1]network 192.168.10.0 mask 24
+[Huawei-ip-pool-BRANCH1]get	
+[Huawei-ip-pool-BRANCH1]ga	
+[Huawei-ip-pool-BRANCH1]gateway-list 192.168.10.1
+[Huawei-ip-pool-BRANCH1]ex	
+[Huawei-ip-pool-BRANCH1]excluded-ip-address 192.168.10.1 192.168.10.10
+Error:The gateway cannot be excluded.
+[Huawei-ip-pool-BRANCH1]excluded-ip-address 192.168.10.2 192.168.10.10
+[Huawei-ip-pool-BRANCH1]dn	
+[Huawei-ip-pool-BRANCH1]dns-list 8.8.8.8
+[Huawei-ip-pool-BRANCH1]q
+[Huawei]
+[Huawei]int	
+[Huawei]interface g	
+[Huawei]interface GigabitEthernet 0/0/0
+[Huawei-GigabitEthernet0/0/0]ip add	
+[Huawei-GigabitEthernet0/0/0]ip address 192.168.10.1 24
+Error: The address already exists.
+[Huawei-GigabitEthernet0/0/0]dhc	
+[Huawei-GigabitEthernet0/0/0]dhcp se	
+[Huawei-GigabitEthernet0/0/0]dhcp select g	
+[Huawei-GigabitEthernet0/0/0]dhcp select global 
+Error: Please enable DHCP in the global view first.
+[Huawei-GigabitEthernet0/0/0]q
+[Huawei]dhc	
+[Huawei]dhcp e	
+[Huawei]dhcp enable 
+Info: The operation may take a few seconds. Please wait for a moment.done.
+[Huawei]interface GigabitEthernet 0/0/0
+[Huawei-GigabitEthernet0/0/0]dhcp select global
+[Huawei-GigabitEthernet0/0/0]q
+[Huawei]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]
+[Huawei]int	
+[Huawei]interface g	
+[Huawei]interface GigabitEthernet 0/0/0
+[Huawei-GigabitEthernet0/0/0]q
+[Huawei]interface GigabitEthernet 0/0/0.10
+[Huawei-GigabitEthernet0/0/0.10]dot	
+[Huawei-GigabitEthernet0/0/0.10]dot1q t	
+[Huawei-GigabitEthernet0/0/0.10]dot1q termination v	
+[Huawei-GigabitEthernet0/0/0.10]dot1q termination vid 10
+[Huawei-GigabitEthernet0/0/0.10]ip add	
+[Huawei-GigabitEthernet0/0/0.10]ip address 192.168.10.1 24
+Error: The specified address conflicts with another address.
+[Huawei-GigabitEthernet0/0/0.10]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]int	
+[Huawei]interface g	
+[Huawei]interface GigabitEthernet 0/0/.99
+                                  ^
+Error: Wrong parameter found at '^' position.
+[Huawei]interface GigabitEthernet 0/0/0.99
+[Huawei-GigabitEthernet0/0/0.99]dot	
+[Huawei-GigabitEthernet0/0/0.99]dot1q t	
+[Huawei-GigabitEthernet0/0/0.99]dot1q termination v	
+[Huawei-GigabitEthernet0/0/0.99]dot1q termination vid 99
+[Huawei-GigabitEthernet0/0/0.99]ip add	
+[Huawei-GigabitEthernet0/0/0.99]ip address 192.168.99.1 24
+Oct 31 2025 03:57:56-08:00 Huawei %%01IFNET/4/LINK_STATE(l)[0]:The line protocol
+ IP on the interface GigabitEthernet0/0/0.99 has entered the UP state. 
+[Huawei-GigabitEthernet0/0/0.99]q
+[Huawei]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]int	
+[Huawei]interface g0/0/2
+[Huawei-GigabitEthernet0/0/2]ip add	
+[Huawei-GigabitEthernet0/0/2]ip address 172.16.0.1 255.255.255.252
+Oct 31 2025 04:10:21-08:00 Huawei %%01IFNET/4/LINK_STATE(l)[0]:The line protocol
+ IP on the interface GigabitEthernet0/0/2 has entered the UP state. 
+[Huawei-GigabitEthernet0/0/2]q
+[Huawei]
+[Huawei]ip rou	
+[Huawei]ip route-	
+[Huawei]ip route-static 192.168.20.0 24 172.168.0.2 pr	
+[Huawei]ip route-static 192.168.20.0 24 172.168.0.2 preference 100
+[Huawei]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]ip poo	
+[Huawei]ip pool BRANCH1
+[Huawei-ip-pool-BRANCH1]Dn	
+[Huawei-ip-pool-BRANCH1]dns-list 192.168.10.100
+[Huawei-ip-pool-BRANCH1]q
+[Huawei]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>ip poo	
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]ip poo	
+[Huawei]ip pool BRANCH1
+[Huawei-ip-pool-BRANCH1]dn	
+[Huawei-ip-pool-BRANCH1]dns-list 192.168.10.100
+Info:Part of the domain-name-server IP has already exist.
+[Huawei-ip-pool-BRANCH1]un	
+[Huawei-ip-pool-BRANCH1]undo dn	
+[Huawei-ip-pool-BRANCH1]undo dns-list 
+                                      ^
+Error:Incomplete command found at '^' position.
+[Huawei-ip-pool-BRANCH1]undo dns-list 192.168.10.100
+[Huawei-ip-pool-BRANCH1]dns-list 192.168.10.100
+[Huawei-ip-pool-BRANCH1]q
+[Huawei]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]ip poo	
+[Huawei]ip pool BRANCH1
+[Huawei-ip-pool-BRANCH1]DN	
+[Huawei-ip-pool-BRANCH1]dns-list 127.0.0.1
+Error:Invalid IP address.
+[Huawei-ip-pool-BRANCH1]und	
+[Huawei-ip-pool-BRANCH1]undo dn	
+[Huawei-ip-pool-BRANCH1]undo dns-list 192.168.10.100
+[Huawei-ip-pool-BRANCH1]dns-list 127.0.0.1
+Error:Invalid IP address.
+[Huawei-ip-pool-BRANCH1]dns-list 192.168.10.100
+[Huawei-ip-pool-BRANCH1]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+-------------------------------------------------------------------------------------------------
+**********ROUTER 2********
+
+The device is running!
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]int	
+[Huawei]interface g0/0/0
+[Huawei-GigabitEthernet0/0/0]ip add	
+[Huawei-GigabitEthernet0/0/0]ip address 192.168.20.1 24
+[Huawei-GigabitEthernet0/0/0]
+Oct 31 2025 02:49:04-08:00 Huawei %%01IFNET/4/LINK_STATE(l)[0]:The line protocol
+ IP on the interface GigabitEthernet0/0/0 has entered the UP state. 
+[Huawei-GigabitEthernet0/0/0]
+[Huawei-GigabitEthernet0/0/0]q
+[Huawei]
+[Huawei]interface g0/0/1
+[Huawei-GigabitEthernet0/0/1]ip add	
+[Huawei-GigabitEthernet0/0/1]ip address 10.0.0.5 255.255.255.252
+Oct 31 2025 02:49:32-08:00 Huawei %%01IFNET/4/LINK_STATE(l)[1]:The line protocol
+ IP on the interface GigabitEthernet0/0/1 has entered the UP state. 
+[Huawei-GigabitEthernet0/0/1]q
+[Huawei]
+[Huawei]
+[Huawei]ip rou	
+[Huawei]ip route-	
+[Huawei]ip route-static 192.168.10.0 24 10.0.0.6
+[Huawei]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]ip poo	
+[Huawei]ip pool BRANCH2
+Info: It's successful to create an IP address pool.
+[Huawei-ip-pool-BRANCH2]net	
+[Huawei-ip-pool-BRANCH2]netw	
+[Huawei-ip-pool-BRANCH2]network 192.168.20.0 m	
+[Huawei-ip-pool-BRANCH2]network 192.168.20.0 mask 24
+[Huawei-ip-pool-BRANCH2]gat	
+[Huawei-ip-pool-BRANCH2]gateway-list 192.168.20.1
+[Huawei-ip-pool-BRANCH2]ex	
+[Huawei-ip-pool-BRANCH2]excluded-ip-address 192.168.20.2 192.168.20.10
+[Huawei-ip-pool-BRANCH2]dn	
+[Huawei-ip-pool-BRANCH2]dns-list 8.8.8.8
+[Huawei-ip-pool-BRANCH2]
+[Huawei-ip-pool-BRANCH2]q
+[Huawei]
+[Huawei]dhc	
+[Huawei]dhcp e	
+[Huawei]dhcp enable 
+Info: The operation may take a few seconds. Please wait for a moment.done.
+[Huawei]
+[Huawei]int	
+[Huawei]interface g	
+[Huawei]interface GigabitEthernet 0/0/0
+[Huawei-GigabitEthernet0/0/0]ip add	
+[Huawei-GigabitEthernet0/0/0]ip address 192.168.20.1 24
+Error: The address already exists.
+[Huawei-GigabitEthernet0/0/0]dh	
+[Huawei-GigabitEthernet0/0/0]dhcp se	
+[Huawei-GigabitEthernet0/0/0]dhcp select g	
+[Huawei-GigabitEthernet0/0/0]dhcp select global 
+[Huawei-GigabitEthernet0/0/0]q
+[Huawei]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]int	
+[Huawei]interface g	
+[Huawei]interface GigabitEthernet 0/0/2
+[Huawei-GigabitEthernet0/0/2]ip add	
+[Huawei-GigabitEthernet0/0/2]ip address 172.16.0.2 255.255.255.252
+Oct 31 2025 04:11:57-08:00 Huawei %%01IFNET/4/LINK_STATE(l)[0]:The line protocol
+ IP on the interface GigabitEthernet0/0/2 has entered the UP state. 
+[Huawei-GigabitEthernet0/0/2]q
+[Huawei]ip rou	
+[Huawei]ip route-	
+[Huawei]ip route-static 192.168.10.0 24 172.168.0.1 p	
+[Huawei]ip route-static 192.168.10.0 24 172.168.0.1 pr	
+[Huawei]ip route-static 192.168.10.0 24 172.168.0.1 preference 100
+[Huawei]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]ip pool BRANCH2
+[Huawei-ip-pool-BRANCH2]dn	
+[Huawei-ip-pool-BRANCH2]dns-list 192.168.10.100
+[Huawei-ip-pool-BRANCH2]q
+[Huawei]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+----------------------------------------------------------------------------------------------
+************ROUTER 3 (HQ)******
+
+The device is running!
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]int	
+[Huawei]interface g0/0/0
+[Huawei-GigabitEthernet0/0/0]ip add	
+[Huawei-GigabitEthernet0/0/0]ip address 10.0.0.2 255.255.255.252
+Oct 31 2025 02:47:43-08:00 Huawei %%01IFNET/4/LINK_STATE(l)[0]:The line protocol
+ IP on the interface GigabitEthernet0/0/0 has entered the UP state. 
+[Huawei-GigabitEthernet0/0/0]
+[Huawei-GigabitEthernet0/0/0]q
+[Huawei]
+[Huawei]
+[Huawei]interface g0/0/1
+[Huawei-GigabitEthernet0/0/1]ip add	
+[Huawei-GigabitEthernet0/0/1]ip address 10.0.0.6 255.255.255.252
+Oct 31 2025 02:48:26-08:00 Huawei %%01IFNET/4/LINK_STATE(l)[1]:The line protocol
+ IP on the interface GigabitEthernet0/0/1 has entered the UP state. 
+[Huawei-GigabitEthernet0/0/1]
+[Huawei-GigabitEthernet0/0/1]q
+[Huawei]
+[Huawei]
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]ip rou	
+[Huawei]ip route-	
+[Huawei]ip route-static 192.168.10.0 24 10.0.0.1
+[Huawei]ip route-static 192.168.20.0 24 10.0.0.5
+[Huawei]q
+<Huawei>
+<Huawei>pin	
+<Huawei>ping 10.0.0.5
+  PING 10.0.0.5: 56  data bytes, press CTRL_C to break
+    Reply from 10.0.0.5: bytes=56 Sequence=1 ttl=255 time=50 ms
+    Reply from 10.0.0.5: bytes=56 Sequence=2 ttl=255 time=20 ms
+    Reply from 10.0.0.5: bytes=56 Sequence=3 ttl=255 time=30 ms
+    Reply from 10.0.0.5: bytes=56 Sequence=4 ttl=255 time=20 ms
+    Reply from 10.0.0.5: bytes=56 Sequence=5 ttl=255 time=10 ms
+
+  --- 10.0.0.5 ping statistics ---
+    5 packet(s) transmitted
+    5 packet(s) received
+    0.00% packet loss
+    round-trip min/avg/max = 10/26/50 ms
+
+<Huawei>
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+<Huawei>
+
+  Please check whether system data has been changed, and save data in time
+
+  Configuration console time out, please press any key to log on
+
+----------------------------------------------------------------------------------------------
+******LSW 1*****
+
+The device is running!
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]int	
+[Huawei]interface ra	
+[Huawei]interface ran	
+[Huawei]interface rang g	
+[Huawei]interface rang g	
+[Huawei]interface g	
+[Huawei]interface GigabitEthernet 0/0/0
+                                  ^
+Error: Wrong parameter found at '^' position.
+[Huawei]und	
+[Huawei]undo sh	
+[Huawei]interface GigabitEthernet 0/0/1
+[Huawei-GigabitEthernet0/0/1]und	
+[Huawei-GigabitEthernet0/0/1]undo sh	
+[Huawei-GigabitEthernet0/0/1]undo shutdown 
+Info: Interface GigabitEthernet0/0/1 is not shutdown.
+[Huawei-GigabitEthernet0/0/1]q
+[Huawei]
+[Huawei]
+[Huawei]interface GigabitEthernet 0/0/2
+[Huawei-GigabitEthernet0/0/2]undo sh	
+[Huawei-GigabitEthernet0/0/2]undo shutdown 
+Info: Interface GigabitEthernet0/0/2 is not shutdown.
+[Huawei-GigabitEthernet0/0/2]q
+[Huawei] User interface con0 is available
+
+
+
+Please Press ENTER.
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]v	
+[Huawei]vlan b	
+[Huawei]vlan batch 10 99
+Info: This operation may take a few seconds. Please wait for a moment...done.
+[Huawei]
+[Huawei]
+Oct 30 2025 22:20:11-08:00 Huawei DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5
+.25.191.3.1 configurations have been changed. The current change number is 4, th
+e change loop count is 0, and the maximum number of records is 4095.
+[Huawei]int	
+[Huawei]interface g	
+[Huawei]interface GigabitEthernet 0/0/2
+[Huawei-GigabitEthernet0/0/2]port l	
+[Huawei-GigabitEthernet0/0/2]port link-t	
+[Huawei-GigabitEthernet0/0/2]port link-type ac	
+[Huawei-GigabitEthernet0/0/2]port link-type access v	
+[Huawei-GigabitEthernet0/0/2]port link-type access 
+[Huawei-GigabitEthernet0/0/2]port
+Oct 30 2025 22:20:51-08:00 Huawei DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5
+.25.191.3.1 configurations have been changed. The current change number is 5, th
+e change loop count is 0, and the maximum number of records is 4095.	
+[Huawei-GigabitEthernet0/0/2]port de	
+[Huawei-GigabitEthernet0/0/2]port default v	
+[Huawei-GigabitEthernet0/0/2]port default vlan 10
+[Huawei-GigabitEthernet0/0/2]
+Oct 30 2025 22:21:11-08:00 Huawei DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5
+.25.191.3.1 configurations have been changed. The current change number is 6, th
+e change loop count is 0, and the maximum number of records is 4095.
+[Huawei-GigabitEthernet0/0/2]q
+[Huawei]
+[Huawei]int	
+[Huawei]interface GigabitEthernet 0/0/4
+[Huawei-GigabitEthernet0/0/4]port link-type access
+[Huawei-GigabitEthernet0/0/4]q
+Oct 30 2025 22:21:51-08:00 Huawei DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5
+.25.191.3.1 configurations have been changed. The current change number is 7, th
+e change loop count is 0, and the maximum number of records is 4095ippiip
+[Huawei-GigabitEthernet0/0/4]port default vlan 99
+[Huawei-GigabitEthernet0/0/4]
+[Huawei-GigabitEthernet0/0/4]
+Oct 30 2025 22:22:21-08:00 Huawei DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5
+.25.191.3.1 configurations have been changed. The current change number is 8, th
+e change loop count is 0, and the maximum number of records is 4095.
+[Huawei-GigabitEthernet0/0/4]q
+[Huawei]
+[Huawei]int	
+[Huawei]interface g	
+[Huawei]interface GigabitEthernet 0/0/1
+[Huawei-GigabitEthernet0/0/1]port l	
+[Huawei-GigabitEthernet0/0/1]port link-t	
+[Huawei-GigabitEthernet0/0/1]port link-type t	
+[Huawei-GigabitEthernet0/0/1]port link-type trunk 
+[Huawei-GigabitEthernet0/0/1]po
+Oct 30 2025 22:22:51-08:00 Huawei DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5
+.25.191.3.1 configurations have been changed. The current change number is 9, th
+e change loop count is 0, and the maximum number of records is 4095.r	
+[Huawei-GigabitEthernet0/0/1]port t	
+[Huawei-GigabitEthernet0/0/1]port trunk a	
+[Huawei-GigabitEthernet0/0/1]port trunk allow-pass v	
+[Huawei-GigabitEthernet0/0/1]port trunk allow-pass vlan 10 99
+[Huawei-GigabitEthernet0/0/1]
+Oct 30 2025 22:23:11-08:00 Huawei DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5
+.25.191.3.1 configurations have been changed. The current change number is 10, t
+he change loop count is 0, and the maximum number of records is 4095.
+[Huawei-GigabitEthernet0/0/1]q
+[Huawei]
+Oct 30 2025 22:29:43-08:00 Huawei %%01PHY/1/PHY(l)[0]:    GigabitEthernet0/0/2: 
+change status to down
+Oct 30 2025 22:29:44-08:00 Huawei %%01PHY/1/PHY(l)[1]:    GigabitEthernet0/0/2: 
+change status to up
+[Huawei]
+[Huawei]un	
+[Huawei]undo v	
+[Huawei]undo vlan b	
+[Huawei]undo vlan batch 10 99
+Warning: The configurations of the VLAN will be deleted. Continue?[Y/N]:y
+Info: This operation may take a few seconds. Please wait for a moment...done.
+[Huawei]
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]
+[Huawei]
+[Huawei]
+Oct 30 2025 22:48:06-08:00 Huawei %%01PHY/1/PHY(l)[0]:    GigabitEthernet0/0/3: 
+change status to up
+Oct 30 2025 22:54:57-08:00 Huawei %%01PHY/1/PHY(l)[1]:    GigabitEthernet0/0/4: 
+change status to up
+[Huawei]
+[Huawei]vl	
+[Huawei]vlan 99
+[Huawei-vlan99]int	
+[Huawei-vlan99]int
+Oct 30 2025 22:55:12-08:00 Huawei DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5
+.25.191.3.1 configurations have been changed. The current change number is 12, t
+he change loop count is 0, and the maximum number of records is 4095.	
+[Huawei-vlan99]int	
+[Huawei-vlan99]intr	
+[Huawei-vlan99]inter	
+[Huawei-vlan99]q
+[Huawei]int	
+[Huawei]interface g	
+[Huawei]interface GigabitEthernet 0/0/4
+[Huawei-GigabitEthernet0/0/4]vl	
+[Huawei-GigabitEthernet0/0/4]vlan 99
+[Huawei-vlan99]po	
+[Huawei-vlan99]port l	
+[Huawei-vlan99]q
+[Huawei]interface GigabitEthernet 0/0/4
+[Huawei-GigabitEthernet0/0/4]port l	
+[Huawei-GigabitEthernet0/0/4]port link-t	
+[Huawei-GigabitEthernet0/0/4]port link-type a	
+[Huawei-GigabitEthernet0/0/4]port link-type access 
+Oct 30 2025 22:56:32-08:00 Huawei %%01PHY/1/PHY(l)[2]:    GigabitEthernet0/0/4: 
+change status to down
+Oct 30 2025 22:56:33-08:00 Huawei %%01PHY/1/PHY(l)[3]:    GigabitEthernet0/0/4: 
+change status to up
+[Huawei-GigabitEthernet0/0/4]
+[Huawei-GigabitEthernet0/0/4]
+[Huawei-GigabitEthernet0/0/4]port de	
+[Huawei-GigabitEthernet0/0/4]port default v	
+[Huawei-GigabitEthernet0/0/4]port default vlan 99
+[Huawei-GigabitEthernet0/0/4]
+Oct 30 2025 22:56:52-08:00 Huawei DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5
+.25.191.3.1 configurations have been changed. The current change number is 13, t
+he change loop count is 0, and the maximum number of records is 4095.
+[Huawei-GigabitEthernet0/0/4]q
+[Huawei]
+Oct 30 2025 23:00:43-08:00 Huawei %%01PHY/1/PHY(l)[4]:    GigabitEthernet0/0/4: 
+change status to down
+Oct 30 2025 23:00:44-08:00 Huawei %%01PHY/1/PHY(l)[5]:    GigabitEthernet0/0/4: 
+change status to up
+Oct 30 2025 23:03:16-08:00 Huawei %%01PHY/1/PHY(l)[6]:    GigabitEthernet0/0/4: 
+change status to down
+Oct 30 2025 23:03:17-08:00 Huawei %%01PHY/1/PHY(l)[7]:    GigabitEthernet0/0/4: 
+change status to up
+Oct 30 2025 23:05:01-08:00 Huawei %%01PHY/1/PHY(l)[8]:    GigabitEthernet0/0/2: 
+change status to down
+Oct 30 2025 23:05:02-08:00 Huawei %%01PHY/1/PHY(l)[9]:    GigabitEthernet0/0/2: 
+change status to up User interface con0 is available
+
+
+
+Please Press ENTER.
+
+
+
+
+----------------------------------------------------------------------------------------------
+
+ACCESS SW 1 , 2 , 3 ,4
+
+The device is running!
+
+<Huawei>sys
+Enter system view, return user view with Ctrl+Z.
+[Huawei]int	
+[Huawei]interface eth	
+[Huawei]interface Ethernet0/0/1
+[Huawei-Ethernet0/0/1]un	
+[Huawei-Ethernet0/0/1]undo sh	
+[Huawei-Ethernet0/0/1]undo shutdown 
+Info: Interface Ethernet0/0/1 is not shutdown.
+[Huawei-Ethernet0/0/1]q
+[Huawei]
+[Huawei]interface Ethernet0/0/2
+[Huawei-Ethernet0/0/2]undo shutdown
+Info: Interface Ethernet0/0/2 is not shutdown.
+[Huawei-Ethernet0/0/2]q
+[Huawei]
+[Huawei]interface Ethernet0/0/3
+[Huawei-Ethernet0/0/3]undo shutdown
+Info: Interface Ethernet0/0/3 is not shutdown.
+[Huawei-Ethernet0/0/3]q
+[Huawei]
+[Huawei]interface Ethernet0/0/4
+[Huawei-Ethernet0/0/4]undo shutdown
+Info: Interface Ethernet0/0/4 is not shutdown.
+[Huawei-Ethernet0/0/4]q
+[Huawei]
+Oct 30 2025 22:02:19-08:00 Huawei %%01PHY/1/PHY(l)[0]:    Ethernet0/0/4: change 
+status to down
+Oct 30 2025 22:02:20-08:00 Huawei %%01PHY/1/PHY(l)[1]:    Ethernet0/0/4: change 
+status to up User interface con0 is available
+
+
+
+Please Press ENTER.
+
+ACCESS SW 2
+
